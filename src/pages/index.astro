@@ -1,5 +1,6 @@
 ---
-
+import { DrivebaseLanding } from "../components/landing/DrivebaseLanding";
+import "../styles/global.css";
 ---
 
 <html lang="en">
@@ -9,9 +10,13 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<meta
+			name="description"
+			content="A desktop-class file manager for local, cloud, and object storage."
+		/>
+		<title>Drivebase</title>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body class="bg-background text-foreground">
+		<DrivebaseLanding client:load />
 	</body>
 </html>

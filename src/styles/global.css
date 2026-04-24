@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap");
+@import "tailwindcss";
+
+:root {
+	--color-background-rgb: 7 9 13;
+	--color-foreground-rgb: 255 255 255;
+	--color-surface-rgb: 11 14 20;
+	--color-surface-raised-rgb: 15 19 28;
+	--color-border-rgb: 255 255 255;
+	--color-muted-rgb: 100 116 139;
+	--color-muted-foreground-rgb: 255 255 255;
+	--color-primary-rgb: 34 211 238;
+	--color-primary-hover-rgb: 6 182 212;
+	--color-primary-foreground-rgb: 10 20 32;
+	--color-secondary-rgb: 168 85 247;
+	--color-accent-rgb: 165 243 252;
+	--color-success-rgb: 16 185 129;
+	--color-warning-rgb: 245 158 11;
+	--color-destructive-rgb: 239 68 68;
+}
+
+@theme {
+	--font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	--font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+	--color-background: rgb(var(--color-background-rgb));
+	--color-foreground: rgb(var(--color-foreground-rgb));
+	--color-surface: rgb(var(--color-surface-rgb));
+	--color-surface-raised: rgb(var(--color-surface-raised-rgb));
+	--color-border: rgb(var(--color-border-rgb) / 0.06);
+	--color-muted: rgb(var(--color-muted-rgb));
+	--color-muted-foreground: rgb(var(--color-muted-foreground-rgb) / 0.55);
+	--color-primary: rgb(var(--color-primary-rgb));
+	--color-primary-hover: rgb(var(--color-primary-hover-rgb));
+	--color-primary-foreground: rgb(var(--color-primary-foreground-rgb));
+	--color-secondary: rgb(var(--color-secondary-rgb));
+	--color-accent: rgb(var(--color-accent-rgb));
+	--color-success: rgb(var(--color-success-rgb));
+	--color-warning: rgb(var(--color-warning-rgb));
+	--color-destructive: rgb(var(--color-destructive-rgb));
+
+	--animate-marquee: marquee 50s linear infinite;
+}
+
+html,
+body {
+	background: rgb(var(--color-background-rgb));
+}
+
+body {
+	font-family: var(--font-sans);
+}
+
+code,
+kbd,
+.font-mono {
+	font-family: var(--font-mono) !important;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: rgb(var(--color-background-rgb));
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgb(var(--color-foreground-rgb) / 0.08);
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: rgb(var(--color-foreground-rgb) / 0.15);
+}
+
+::selection {
+	background: rgb(var(--color-primary-rgb) / 0.3);
+	color: rgb(var(--color-foreground-rgb));
+}
+
+.button-primary {
+	background: linear-gradient(180deg, rgb(122 230 247), rgb(var(--color-primary-hover-rgb)));
+	box-shadow:
+		0 0 0 1px rgb(var(--color-primary-rgb) / 0.33),
+		0 8px 24px -8px rgb(var(--color-primary-rgb) / 0.4);
+	color: rgb(var(--color-primary-foreground-rgb));
+}
+
+.surface-card {
+	background: linear-gradient(180deg, rgb(var(--color-foreground-rgb) / 0.03), rgb(var(--color-foreground-rgb) / 0.01));
+	border: 1px solid rgb(var(--color-border-rgb) / 0.06);
+}
+
+.section-border {
+	border-color: rgb(var(--color-border-rgb) / 0.05);
+}
+
+.text-shimmer {
+	background: linear-gradient(
+		100deg,
+		rgb(var(--color-foreground-rgb)) 10%,
+		rgb(var(--color-primary-rgb)) 45%,
+		rgb(var(--color-accent-rgb)) 65%,
+		rgb(var(--color-foreground-rgb)) 90%
+	);
+	background-size: 200% 100%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: shimmer 6s linear infinite;
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(16px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-6px);
+	}
+}
