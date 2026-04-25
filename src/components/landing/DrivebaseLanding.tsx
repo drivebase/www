@@ -14,6 +14,9 @@ export function DrivebaseLanding() {
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground antialiased">
       <Grain />
       <Nav />
+      <div className="fixed bottom-4 left-4 z-50 rounded-full border border-white/10 bg-background/80 px-3 py-1.5 text-xs font-medium text-white/60 shadow-lg shadow-black/20 backdrop-blur">
+        Work in progress
+      </div>
       <main className="relative z-10">
         <Hero />
         <Providers />
