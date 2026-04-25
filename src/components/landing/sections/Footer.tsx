@@ -1,6 +1,7 @@
 import React from 'react';
 import { A_ACCENT2 } from '../theme';
-import { Logo } from './Nav';
+import { Logo } from '../shared/Logo';
+import { siteConfig } from '../../../config/site';
 
 // ─── Footer ──────────────────────────────────────────────────
 export const Footer = () => {
@@ -12,8 +13,8 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
           <div className="col-span-2">
             <div className="flex items-center gap-2.5">
-              <Logo/>
-              <span className="text-white font-semibold tracking-tight">Drivebase</span>
+              <Logo />
+              <span className="text-white font-semibold tracking-tight">{siteConfig.name}</span>
             </div>
             <p className="mt-4 text-sm text-white/50 max-w-xs leading-relaxed">
               A desktop-class workspace for every drive you own.

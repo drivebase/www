@@ -1,6 +1,43 @@
 ---
 import { DrivebaseLanding } from "../components/landing/DrivebaseLanding";
+import { githubUrl, siteConfig } from "../config/site";
 import "../styles/global.css";
+
+const canonicalUrl = siteConfig.url;
+const imageUrl = new URL(siteConfig.seo.image, siteConfig.url).toString();
+const softwareJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "SoftwareApplication",
+	name: siteConfig.name,
+	applicationCategory: "FileManager",
+	operatingSystem: "macOS, Windows, Linux",
+	description: siteConfig.description,
+	url: siteConfig.url,
+	codeRepository: githubUrl,
+	license: "https://opensource.org/license/mit",
+	softwareVersion: siteConfig.version.replace(/^v/, ""),
+	offers: {
+		"@type": "Offer",
+		price: "0",
+		priceCurrency: "USD",
+		category: "Open source self-hosted",
+	},
+};
+const organizationJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Organization",
+	name: "Drivebase Labs",
+	url: siteConfig.url,
+	logo: new URL("/favicon.svg", siteConfig.url).toString(),
+	sameAs: [githubUrl],
+};
+const websiteJsonLd = {
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	name: siteConfig.name,
+	url: siteConfig.url,
+	description: siteConfig.description,
+};
 ---
 
 <html lang="en">
@@ -10,11 +47,125 @@ import "../styles/global.css";
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="description"
-			content="A desktop-class file manager for local, cloud, and object storage."
-		/>
-		<title>Drivebase</title>
+		<title>{siteConfig.title}</title>
+		<meta name="description" content={siteConfig.description} />
+		<link rel="canonical" href={canonicalUrl} />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={siteConfig.name} />
+		<meta property="og:title" content={siteConfig.title} />
+		<meta property="og:description" content={siteConfig.description} />
+		<meta property="og:url" content={canonicalUrl} />
+		<meta property="og:image" content={imageUrl} />
+		<meta property="og:locale" content={siteConfig.seo.locale} />
+		<meta name="twitter:card" content={siteConfig.seo.twitterCard} />
+		<meta name="twitter:title" content={siteConfig.title} />
+		<meta name="twitter:description" content={siteConfig.description} />
+		<meta name="twitter:image" content={imageUrl} />
+		<style is:inline>
+			html,
+			body {
+				margin: 0;
+				background: rgb(7 9 13);
+			}
+
+			*,
+			*::before,
+			*::after {
+				box-sizing: border-box;
+			}
+
+			.site-nav-inner {
+				box-sizing: border-box;
+				width: 100%;
+				max-width: 80rem;
+				margin-inline: auto;
+				padding-inline: 1rem;
+			}
+
+			.site-nav-links {
+				display: none;
+			}
+
+			.site-hero-section {
+				box-sizing: border-box;
+				padding-top: 6rem;
+				padding-bottom: 2.5rem;
+				overflow: hidden;
+			}
+
+			.site-hero-copy {
+				box-sizing: border-box;
+				width: 100%;
+				max-width: 48rem;
+				margin-inline: auto;
+				margin-bottom: 2.5rem;
+				padding-inline: 1.5rem;
+				text-align: center;
+			}
+
+			.site-hero-title {
+				margin: 0;
+				color: rgb(var(--color-foreground-rgb));
+				font-size: 56px;
+				font-weight: 600;
+				letter-spacing: -0.04em;
+				line-height: 0.95;
+			}
+
+			.site-hero-subtitle {
+				max-width: 36rem;
+				margin: 1.5rem auto 0;
+				color: rgb(var(--color-foreground-rgb) / 0.55);
+				font-size: 1.125rem;
+				line-height: 1.625;
+			}
+
+			.site-hero-actions {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				gap: 0.75rem;
+				margin-top: 2rem;
+			}
+
+			.hero-illustration-wrap {
+				display: none !important;
+			}
+
+			@media (min-width: 640px) {
+				.site-nav-inner {
+					padding-inline: 1.5rem;
+				}
+			}
+
+			@media (min-width: 768px) {
+				.site-nav-links {
+					display: flex;
+				}
+
+				.site-hero-section {
+					padding-top: 8rem;
+					padding-bottom: 4rem;
+				}
+
+				.site-hero-title {
+					font-size: 76px;
+				}
+
+				.site-hero-actions {
+					flex-direction: row;
+				}
+
+				.hero-illustration-wrap {
+					display: block !important;
+				}
+			}
+		</style>
+		<script type="application/ld+json" set:html={JSON.stringify(softwareJsonLd)} />
+		<script type="application/ld+json" set:html={JSON.stringify(organizationJsonLd)} />
+		<script type="application/ld+json" set:html={JSON.stringify(websiteJsonLd)} />
 	</head>
 	<body class="bg-background text-foreground">
 		<DrivebaseLanding client:load />

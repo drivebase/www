@@ -1,6 +1,7 @@
 import React from 'react';
 import { foregroundAlpha, primaryAlpha } from '../theme';
 import { Spotlight } from '../shared/Primitives';
+import { siteConfig } from '../../../config/site';
 
 const DownloadBackground = () => (
   <>
@@ -27,16 +28,6 @@ const DownloadBackground = () => (
     <div className="absolute right-10 top-10 h-10 w-10 border-r border-t border-primary/30" />
     <div className="absolute bottom-10 left-10 h-10 w-10 border-b border-l border-primary/20" />
     <div className="absolute bottom-10 right-10 h-10 w-10 border-b border-r border-primary/20" />
-    <div className="absolute left-12 top-1/2 hidden -translate-y-1/2 flex-col gap-2 text-left font-mono text-[10px] text-white/20 md:flex">
-      <span className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1">drivebase auth</span>
-      <span className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1">mount cloud://</span>
-      <span className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1">sync --watch</span>
-    </div>
-    <div className="absolute right-12 top-1/2 hidden -translate-y-1/2 flex-col gap-2 text-left font-mono text-[10px] text-white/20 md:flex">
-      <span className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1">S3</span>
-      <span className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1">R2</span>
-      <span className="rounded-md border border-white/10 bg-white/[0.03] px-2 py-1">WebDAV</span>
-    </div>
   </>
 );
 
@@ -60,11 +51,11 @@ export const Download = () => (
           </p>
           <div className="mt-8 flex justify-center">
             <div
-              className="inline-flex max-w-full items-center gap-3 rounded-xl px-4 py-3 font-mono text-sm text-white/80"
+              className="inline-flex max-w-full items-center gap-2 rounded-xl px-3 py-3 font-mono text-[clamp(10px,2.7vw,14px)] text-white/80 sm:gap-3 sm:px-4"
               style={{ background: foregroundAlpha(0.06), border: `1px solid ${foregroundAlpha(0.1)}` }}
             >
-              <span className="text-white/35 select-none">$</span>
-              <span className="break-all">curl -fsSL get.drivebase.app | sh</span>
+              <span className="shrink-0 text-white/35 select-none">$</span>
+              <span className="min-w-0 whitespace-nowrap">{siteConfig.installCommand}</span>
             </div>
           </div>
         </div>

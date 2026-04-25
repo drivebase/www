@@ -39,7 +39,7 @@ const PRICING_TIERS: PricingTier[] = [
       annual: { price: '$10', suffix: '/ month · billed annually' },
     },
     features: ['Everything in Solo', 'Unlimited cloud drives', 'E2E encryption', 'Scriptable macros', 'Priority sync'],
-    cta: 'Start free',
+    cta: 'Coming soon',
     highlight: true,
   },
   {
@@ -50,7 +50,7 @@ const PRICING_TIERS: PricingTier[] = [
       annual: { price: '$6', suffix: '/ user · month · billed annually' },
     },
     features: ['Everything in Pro', 'Shared workspaces', 'SSO + audit logs', 'Role-based policies', 'SLA 99.9%'],
-    cta: 'Contact sales',
+    cta: 'Coming soon',
     highlight: false,
   },
 ];

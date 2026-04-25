@@ -1,6 +1,7 @@
 import React from 'react';
 import { A_ACCENT, foregroundAlpha } from '../theme';
 import { Dot, Pill, Spotlight } from '../shared/Primitives';
+import { useGithubStars } from '../hooks/useGithubStars';
 
 // ─── Testimonials ─────────────────────────────────────────────
 const QUOTES = [
@@ -13,6 +14,8 @@ const QUOTES = [
 ];
 
 export const Testimonials = () => {
+  const github = useGithubStars();
+
   return (
     <section className="relative py-24 border-t border-white/5 overflow-hidden">
       <Spotlight x="50%" y="50%" color="rgb(var(--color-secondary-rgb))" size="700px" opacity={0.06}/>
@@ -27,7 +30,7 @@ export const Testimonials = () => {
           <div className="hidden md:flex items-center gap-6 text-white/60 text-sm">
             <div><div className="text-2xl font-semibold text-white">4.9</div><div className="text-xs">★ avg review</div></div>
             <div className="w-px h-10 bg-white/10"/>
-            <div><div className="text-2xl font-semibold text-white">12.4k</div><div className="text-xs">GitHub stars</div></div>
+            <div><div className="text-2xl font-semibold text-white">{github.stars}</div><div className="text-xs">GitHub stars</div></div>
             <div className="w-px h-10 bg-white/10"/>
             <div><div className="text-2xl font-semibold text-white">1.2M</div><div className="text-xs">transfers / week</div></div>
           </div>
