@@ -10,9 +10,5 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
 
-  integrations: [react()],
-
-  redirects: {
-    '/install': 'https://raw.githubusercontent.com/drivebase/drivebase/refs/heads/main/scripts/install.sh'
-  }
+  integrations: [react()]
 });
