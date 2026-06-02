@@ -1,0 +1,76 @@
+---
+import LegalLayout from "../layouts/LegalLayout.astro";
+---
+
+<LegalLayout
+	title="Privacy Policy"
+	description="How Drivebase handles your data across the open-source self-hosted app and the managed cloud service."
+	updated="June 2, 2026"
+>
+	<p>
+		Drivebase is an open-source, self-hostable platform that connects your cloud
+		storage providers under one interface. This policy explains what data we
+		handle and how — and it draws a clear line between the <strong>self-hosted</strong>
+		software and the <strong>managed cloud service</strong> at
+		<a href="https://cloud.drivebase.io">cloud.drivebase.io</a>.
+	</p>
+
+	<h2>Self-hosted Drivebase</h2>
+	<p>
+		When you run Drivebase on your own infrastructure, your data never reaches
+		us. Everything — provider credentials, file metadata, and operation history —
+		lives in the database you control. We do not receive telemetry, file contents,
+		or account information from self-hosted instances.
+	</p>
+
+	<h2>Managed cloud service</h2>
+	<p>
+		If you use the hosted service at cloud.drivebase.io, we process a limited
+		amount of data to provision and run your instance:
+	</p>
+	<ul>
+		<li><strong>Account data</strong> — your email address and authentication details, used to sign you in and contact you about your account.</li>
+		<li><strong>Billing data</strong> — subscription and payment information is processed by our payment provider, <a href="https://polar.sh">Polar</a>. We do not store full card details on our servers.</li>
+		<li><strong>Instance metadata</strong> — the plan you are on and the resources allocated to your instance, used for provisioning, support, and billing.</li>
+	</ul>
+
+	<h3>Storage provider credentials</h3>
+	<p>
+		Credentials you connect (Google Drive, Amazon S3, Dropbox, and others) are
+		stored within your own Drivebase instance so it can talk to those providers
+		on your behalf. We do not browse, copy, or sell the contents of your files.
+	</p>
+
+	<h2>Analytics</h2>
+	<p>
+		On this website we use privacy-friendly, cookieless analytics to understand
+		aggregate traffic (such as page views and referrers). It does not track you
+		across sites or build an advertising profile.
+	</p>
+
+	<h2>Data sharing</h2>
+	<p>
+		We do not sell your personal data. We share information only with the service
+		providers needed to run the cloud offering — for example, our payment
+		processor and hosting infrastructure — and only to the extent required to
+		deliver the service.
+	</p>
+
+	<h2>Your choices</h2>
+	<ul>
+		<li>You can delete your cloud account and instance at any time, which removes the associated account and instance data.</li>
+		<li>You can disconnect any storage provider from within Drivebase.</li>
+		<li>Self-hosting gives you full control: export, migrate, or delete your data directly.</li>
+	</ul>
+
+	<h2>Changes</h2>
+	<p>
+		We may update this policy as the product evolves. Material changes will be
+		reflected by the "last updated" date above.
+	</p>
+
+	<h2>Contact</h2>
+	<p>
+		Questions about privacy? Reach us at <a href="mailto:hello@drivebase.io">hello@drivebase.io</a>.
+	</p>
+</LegalLayout>

@@ -7,6 +7,10 @@ export const siteConfig = {
 	releaseNote: "Introducing DriveOS",
 	githubRepo: import.meta.env.PUBLIC_GITHUB_REPO || "drivebase/drivebase",
 	installCommand: "curl -fsSL https://drivebase.io/install | bash",
+	socials: {
+		discord: "https://discord.gg/QVjjBbeMcd",
+		x: "https://x.com/drivebase_io",
+	},
 	seo: {
 		locale: "en_US",
 		image: "/og.png",

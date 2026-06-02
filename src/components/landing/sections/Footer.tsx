@@ -1,7 +1,7 @@
 import React from 'react';
 import { A_ACCENT2 } from '../theme';
 import { Logo } from '../shared/Logo';
-import { siteConfig } from '../../../config/site';
+import { githubUrl, siteConfig } from '../../../config/site';
 
 // ─── Footer ──────────────────────────────────────────────────
 export const Footer = () => {
@@ -29,24 +29,41 @@ export const Footer = () => {
             </form>
           </div>
           {[
-            { h: 'Product', items: ['Features', 'Providers', 'Changelog', 'Roadmap', 'Status'] },
-            { h: 'Developers', items: ['Docs', 'CLI', 'API', 'GitHub', 'Discord'] },
-            { h: 'Company', items: ['About', 'Privacy', 'Terms', 'Security', 'Contact'] },
+            { h: 'Product', items: [
+              { label: 'Features', href: '#features' },
+              { label: 'Providers', href: '#providers' },
+              { label: 'Pricing', href: '#pricing' },
+              { label: 'Cloud', href: 'https://cloud.drivebase.io' },
+            ] },
+            { h: 'Developers', items: [
+              { label: 'Docs', href: '#' },
+              { label: 'GitHub', href: githubUrl },
+              { label: 'Discord', href: siteConfig.socials.discord },
+            ] },
+            { h: 'Company', items: [
+              { label: 'Privacy', href: '/privacy' },
+              { label: 'Terms', href: '/terms' },
+              { label: 'Contact', href: 'mailto:hello@drivebase.io' },
+            ] },
           ].map(c => (
             <div key={c.h}>
               <h4 className="text-xs font-mono tracking-wider text-white/40 uppercase mb-4">{c.h}</h4>
               <ul className="space-y-2.5">
-                {c.items.map(i => <li key={i}><a className="text-sm text-white/60 hover:text-white transition-colors" href="#">{i}</a></li>)}
+                {c.items.map(i => <li key={i.label}><a className="text-sm text-white/60 hover:text-white transition-colors" href={i.href}>{i.label}</a></li>)}
               </ul>
             </div>
           ))}
         </div>
         <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div className="text-xs text-white/40 font-mono">© 2026 Drivebase Labs · Built in SF & Berlin</div>
+          <div className="flex items-center gap-1.5 text-xs text-white/40 font-mono">
+            <span>© 2026 Drivebase · Built with</span>
+            <svg viewBox="0 0 24 24" className="w-3.5 h-3.5 text-red-500" fill="currentColor" aria-label="love"><path d="M12 21s-6.7-4.35-9.33-7.51C.42 10.66 1.1 6.9 4.06 5.5c2.04-.97 4.3-.2 5.44 1.46L12 9.5l2.5-2.54c1.14-1.66 3.4-2.43 5.44-1.46 2.96 1.4 3.64 5.16 1.39 7.99C18.7 16.65 12 21 12 21z"/></svg>
+            <span>in India</span>
+          </div>
           <div className="flex items-center gap-4 text-white/40">
-            <a href="#"><svg viewBox="0 0 24 24" className="w-4 h-4 hover:text-white transition-colors" fill="currentColor"><path d="M12 .5A11.5 11.5 0 00.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-1.95c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 015.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.66.79.55A11.5 11.5 0 0023.5 12 11.5 11.5 0 0012 .5z"/></svg></a>
-            <a href="#"><svg viewBox="0 0 24 24" className="w-4 h-4 hover:text-white transition-colors" fill="currentColor"><path d="M18.9 1.2h3.6l-7.8 9 9.3 12.6h-7.2l-5.7-7.5-6.6 7.5H0.9l8.4-9.6L0.3 1.2h7.5l5.1 6.8L18.9 1.2z"/></svg></a>
-            <a href="#"><svg viewBox="0 0 24 24" className="w-4 h-4 hover:text-white transition-colors" fill="currentColor"><path d="M20.32 4.37A19.8 19.8 0 0015.72 3l-.2.4a18.3 18.3 0 00-5 .93 17.8 17.8 0 00-3.78 1.12L3.68 4.37A19.8 19.8 0 00.8 7.12 26 26 0 00.2 18.8a19.8 19.8 0 005.4 2.72l1.1-1.5a11.5 11.5 0 01-1.8-.87l.45-.35a13 13 0 0012.3 0l.45.35a11.5 11.5 0 01-1.8.87l1.1 1.5a19.8 19.8 0 005.4-2.72 26 26 0 00-.6-11.68 19.8 19.8 0 00-2.88-2.75zM8.02 15.32c-1.1 0-2-1-2-2.24s.88-2.24 2-2.24 2.02 1 2 2.24c0 1.24-.88 2.24-2 2.24zm7.96 0c-1.1 0-2-1-2-2.24s.88-2.24 2-2.24 2.02 1 2 2.24-.88 2.24-2 2.24z"/></svg></a>
+            <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub"><svg viewBox="0 0 24 24" className="w-4 h-4 hover:text-white transition-colors" fill="currentColor"><path d="M12 .5A11.5 11.5 0 00.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-1.95c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 015.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.77.11 3.06.74.81 1.19 1.84 1.19 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.66.79.55A11.5 11.5 0 0023.5 12 11.5 11.5 0 0012 .5z"/></svg></a>
+            <a href={siteConfig.socials.x} target="_blank" rel="noreferrer" aria-label="X"><svg viewBox="0 0 24 24" className="w-4 h-4 hover:text-white transition-colors" fill="currentColor"><path d="M18.9 1.2h3.6l-7.8 9 9.3 12.6h-7.2l-5.7-7.5-6.6 7.5H0.9l8.4-9.6L0.3 1.2h7.5l5.1 6.8L18.9 1.2z"/></svg></a>
+            <a href={siteConfig.socials.discord} target="_blank" rel="noreferrer" aria-label="Discord"><svg viewBox="0 0 24 24" className="w-4 h-4 hover:text-white transition-colors" fill="currentColor"><path d="M20.32 4.37A19.8 19.8 0 0015.72 3l-.2.4a18.3 18.3 0 00-5 .93 17.8 17.8 0 00-3.78 1.12L3.68 4.37A19.8 19.8 0 00.8 7.12 26 26 0 00.2 18.8a19.8 19.8 0 005.4 2.72l1.1-1.5a11.5 11.5 0 01-1.8-.87l.45-.35a13 13 0 0012.3 0l.45.35a11.5 11.5 0 01-1.8.87l1.1 1.5a19.8 19.8 0 005.4-2.72 26 26 0 00-.6-11.68 19.8 19.8 0 00-2.88-2.75zM8.02 15.32c-1.1 0-2-1-2-2.24s.88-2.24 2-2.24 2.02 1 2 2.24c0 1.24-.88 2.24-2 2.24zm7.96 0c-1.1 0-2-1-2-2.24s.88-2.24 2-2.24 2.02 1 2 2.24-.88 2.24-2 2.24z"/></svg></a>
           </div>
         </div>
       </div>

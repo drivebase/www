@@ -10,9 +10,7 @@ type FeatureCardProps = { className?: string; tag: string; title: ReactNode; bod
 // ─── Features ────────────────────────────────────────────────
 export const Features = () => {
   const [ref, seen] = useInView();
-  const transfers = useCountUp(4.2, seen);
-  const files = useCountUp(128, seen);
-  const ops = useCountUp(32, seen);
+  const providers = useCountUp(5, seen);
 
   return (
     <section id="features" ref={ref} className="relative py-24">
@@ -21,67 +19,67 @@ export const Features = () => {
         <div className="max-w-2xl mb-14">
           <Pill><Dot/>Built for file work</Pill>
           <h2 className="mt-4 text-4xl md:text-5xl font-semibold tracking-[-0.03em] text-white leading-[1.05]">
-            Power tools, quiet interface.
+            A file manager that thinks in windows.
           </h2>
           <p className="mt-4 text-white/50 text-lg leading-relaxed">
-            Keyboard-first, window-aware, and fast enough to forget it's there.
+            Connect every provider, then browse, transfer, and resolve conflicts from one open-source desktop shell.
           </p>
         </div>
 
         <div className="grid grid-cols-12 gap-4">
-          {/* Big: Multi-window */}
+          {/* Big: OS-like interface */}
           <FeatureCard
             className="col-span-12 lg:col-span-7 row-span-2"
-            tag="Multi-window"
-            title="Two drives. One view."
-            body="Tile or float unlimited windows. Drag files between providers like they live in the same folder."
+            tag="OS-like interface"
+            title="Apps, not dashboards."
+            body="Files, Providers, and Settings open as windows you move, resize, and tile. Drag files between providers like they share one folder."
             visual={<MultiWindowVisual/>}
             span
           />
 
-          {/* Transfers */}
+          {/* Multi-provider */}
           <FeatureCard
             className="col-span-12 sm:col-span-6 lg:col-span-5"
-            tag="Real-time transfers"
-            title="Resilient by design"
-            body="Pause, resume, retry. Parallel chunking with per-provider rate limits."
-            stat={<div className="flex items-baseline gap-1.5"><span className="text-3xl font-semibold text-white tabular-nums">{transfers.toFixed(1)}</span><span className="text-sm text-white/40">GB/s peak</span></div>}
+            tag="Multi-provider"
+            title="Connect everything"
+            body="Google Drive, S3, Dropbox, OneDrive, local — plus any S3-compatible store like R2, Wasabi, or MinIO."
+            stat={<div className="flex items-baseline gap-1.5"><span className="text-3xl font-semibold text-white tabular-nums">{Math.round(providers)}+</span><span className="text-sm text-white/40">providers</span></div>}
           />
 
-          {/* Search */}
+          {/* Real-time progress */}
           <FeatureCard
             className="col-span-12 sm:col-span-6 lg:col-span-5"
-            tag="Unified search"
-            title="Find it anywhere"
-            body="Index across all connected drives. Fuzzy, faceted, content-aware."
-            stat={<div className="flex items-baseline gap-1.5"><span className="text-3xl font-semibold text-white tabular-nums">{Math.round(files)}ms</span><span className="text-sm text-white/40">avg query</span></div>}
+            tag="Real-time progress"
+            title="Watch it happen"
+            body="Live operation status streamed over SSE — no polling. Chunked uploads resume right through a browser reload."
+            stat={<div className="flex items-baseline gap-1.5"><Dot color="#10b981"/><span className="text-sm font-mono text-white/60">SSE · resumable</span></div>}
           />
 
-          {/* Ops */}
+          {/* Batch ops */}
           <FeatureCard
             className="col-span-12 sm:col-span-6 lg:col-span-4"
-            tag="File operations"
-            title={`${Math.round(ops)} power ops`}
-            body="Bulk rename, hash verify, conflict resolve, permission sync."
+            tag="Batch operations"
+            title="Move at scale"
+            body="Copy, move, transfer, and delete across providers — with preflight conflict analysis before anything runs."
             icon={<OpsIcon/>}
           />
 
-          {/* Encrypt */}
+          {/* Self-hosted */}
           <FeatureCard
             className="col-span-12 sm:col-span-6 lg:col-span-4"
-            tag="Privacy"
-            title="End-to-end capable"
-            body="Client-side AES-256. Keys never touch our servers."
+            tag="Self-hosted"
+            title="Your data, your box"
+            body="Open source and self-hosted via Docker. Secrets auto-generate — nothing leaves your infrastructure."
             icon={<LockIcon/>}
           />
 
-          {/* Keyboard */}
+          {/* GraphQL API */}
           <FeatureCard
             className="col-span-12 sm:col-span-12 lg:col-span-4"
-            tag="Keyboard"
-            title="Never touch the mouse"
-            body="Vim-style motion. Command palette. Scriptable macros."
-            icon={<KbdRow/>}
+            tag="Extensible"
+            title="Typed GraphQL API"
+            body="Every capability is exposed over GraphQL. Add new backends with a clean IStorageProvider interface."
+            icon={<ApiRow/>}
           />
         </div>
       </div>
@@ -160,7 +158,7 @@ const MultiWindowVisual = () => (
 
 const OpsIcon = () => (
   <div className="flex flex-wrap gap-1.5 justify-end">
-    {['rename', 'hash', 'sync', 'diff', 'dedupe', 'perms', 'tag', 'zip'].map((t, i) => (
+    {['copy', 'move', 'transfer', 'delete', 'overwrite', 'skip', 'rename', 'resolve'].map((t, i) => (
       <span key={t} className="px-2 py-1 rounded-md text-[10px] font-mono text-white/60 border border-white/10 bg-white/[0.02]"
             style={{ animation: `fadeIn 0.4s ease-out ${i * 0.08}s backwards, none` }}>
         {t}
@@ -179,11 +177,11 @@ const LockIcon = () => (
   </div>
 );
 
-const KbdRow = () => (
+const ApiRow = () => (
   <div className="flex items-center gap-1.5 text-xs">
-    {['⌘','K'].map((k, i) => (
-      <kbd key={i} className="px-2.5 py-1.5 rounded-md font-mono text-white/70 border border-white/10 bg-white/[0.04]">{k}</kbd>
+    {['query','mutation'].map((k) => (
+      <kbd key={k} className="px-2.5 py-1.5 rounded-md font-mono text-white/70 border border-white/10 bg-white/[0.04]">{k}</kbd>
     ))}
-    <span className="text-white/30 ml-1 text-xs font-mono">→ palette</span>
+    <span className="text-white/30 ml-1 text-xs font-mono">→ graphql</span>
   </div>
 );

@@ -4,12 +4,12 @@ import { Pill } from '../shared/Primitives';
 
 // ─── FAQ ─────────────────────────────────────────────────────
 const FAQS = [
-  { q: 'Is Drivebase really free?', a: 'The core app is open source (MIT) and free forever. Pro unlocks advanced features like E2E encryption and scriptable macros.' },
-  { q: 'Does it sync or stream?', a: 'Streams. Drivebase speaks native protocols (S3, WebDAV, OAuth) so files render instantly without local duplication. Pin what you want offline.' },
-  { q: 'Which platforms are supported?', a: 'Native binaries for macOS 12+, Windows 10+, and Linux (x86_64, arm64). All three ship from the same Rust core.' },
-  { q: 'Is my data private?', a: 'Yes. Credentials live in your OS keychain. Optional E2E encryption means we never see your files. Telemetry is off by default.' },
-  { q: 'Can I automate it?', a: 'Fully. TypeScript-flavored macros, shell hooks, and a CLI (drivebase mv s3://… gdrive://…). Scripts run inside the same transfer engine.' },
-  { q: 'How is this different from rclone?', a: 'rclone is a CLI. Drivebase is a desktop GUI built on the same ideas — with side-by-side windows, live previews, and the rough edges sanded off.' },
+  { q: 'Is Drivebase really free?', a: 'Yes. The core is open source (MIT) and free to self-host forever. If you would rather not run it yourself, managed cloud instances start at $9.99/mo.' },
+  { q: 'Self-hosted or cloud?', a: 'Both. Run it on your own box with Docker, or spin up a managed instance at cloud.drivebase.io and skip the ops.' },
+  { q: 'Which providers are supported?', a: 'Today: Google Drive, Amazon S3 (and S3-compatible stores like Cloudflare R2), Dropbox, and your local filesystem. OneDrive, Box, and more are on the way.' },
+  { q: 'Does it sync or copy files locally?', a: 'Neither by default. Drivebase talks to each provider’s API directly, so you browse and transfer in place. Batch operations move files provider-to-provider with conflict checks first.' },
+  { q: 'Is my data private?', a: 'When self-hosted, everything runs on your infrastructure. Provider credentials live in your own database, secrets are auto-generated, and nothing routes through us.' },
+  { q: 'How is this different from rclone?', a: 'rclone is a CLI. Drivebase is a self-hosted web app with an OS-like windowed UI, real-time transfer progress over SSE, and a typed GraphQL API — same spirit, friendlier surface.' },
 ];
 
 export const FAQ = () => {
@@ -41,7 +41,7 @@ export const FAQ = () => {
                 </svg>
               </div>
               <div className="overflow-hidden transition-all duration-300"
-                   style={{ maxHeight: open === i ? 200 : 0 }}>
+                   style={{ maxHeight: open === i ? 280 : 0 }}>
                 <p className="px-5 pb-5 text-white/60 text-sm leading-relaxed">{f.a}</p>
               </div>
             </button>
